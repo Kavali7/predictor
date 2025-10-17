@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { Layout, PageSection } from './components/layout';
+import { HeroSection } from './components/landing';
 import { personalNumber, coupleNumber, compatScore } from './app-content/src/numerology';
 import { getIndividualReport, getCoupleReport } from './app-content/src/contentLoader';
 
@@ -37,35 +38,7 @@ export default function App() {
 
   return (
     <Layout>
-      <PageSection id="hero" className="pt-10 text-center lg:pt-16">
-        <span className="inline-flex items-center justify-center rounded-full bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.32em] text-primary">
-          Aa Predictor
-        </span>
-        <div className="mx-auto max-w-4xl space-y-6">
-          <h1 className="text-4xl font-bold leading-tight text-slate-950 sm:text-5xl">
-            Numérologie de couple inspirée et partageable
-          </h1>
-          <p className="text-base leading-relaxed text-muted sm:text-lg">
-            Explorez le potentiel de votre duo, révélez vos points d harmonie et partagez un rapport scintillant
-            avec vos proches en un clic.
-          </p>
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
-            <a
-              className="inline-flex items-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-white shadow-[0_18px_40px_-18px_rgba(91,33,182,0.6)] transition hover:translate-y-[-2px] hover:shadow-[0_22px_50px_-18px_rgba(91,33,182,0.65)]"
-              href="#simulations"
-            >
-              Commencer l expérience
-            </a>
-            <a
-              className="inline-flex items-center rounded-full border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-primary transition hover:border-primary/30 hover:text-primary"
-              href="#resultats"
-            >
-              Voir un aperçu
-            </a>
-          </div>
-        </div>
-      </PageSection>
-
+      <HeroSection />
       <PageSection id="resultats" className="relative">
         <div className="absolute inset-x-0 top-0 -z-10 h-full bg-gradient-to-b from-secondary/5 via-transparent to-transparent" />
         <div className="card space-y-6">
