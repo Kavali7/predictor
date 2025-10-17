@@ -1,0 +1,13 @@
+Maintenant, tu vas créer un dossier plan. Dans ce dossier, tu vas recencer tout ce qui reste  
+  pour que le site soit pret à être déployer (frontent, bachend, fonction, logique,......) sous 
+  forme de 20 tâches. Les 20 tâches doivent couvrir tout. Dans le dossier, chaque fichier doit  
+  correspondre à l'une des têches (un fichier avec tous les détails, possible et prêt à être    
+  exécuter). Tu pars du frontend puis tu évolue jusqu'à la fin des tâches. Il faut choisir des  
+  couleurs de qualités (reparquable, css tailwild, un dsiengn modern, attrayant). Un site qui   
+  donne envi d'y séjourner.Rien que de misen forme modernes. Qui facilite la lecture.Des icones modernes et autres. 
+
+
+  git remote add origin https://github.com/Kavali7/predictor.git
+
+
+  Passe à l'exécution de la tache 2 dans le dossier plan. N'oublie pas de faire les tests pour t'assurer de l'abasense de problèmes de compilation, d'avertissement et autres.Déplace cette tâche une fois terminée dans un sous dossier done (que tu vas créer dans le dossier plan) et cré un commite en lui donnant le nom "Tache 2" puis pousse vers le depot distant.En fin, cré puis balances sur une nouvelle branche
