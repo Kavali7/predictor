@@ -8,6 +8,7 @@
   :root {
     color-scheme: light;
     background-color: theme('colors.background');
+    --font-scale: 1;
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -29,10 +30,28 @@
 
   html {
     @apply scroll-smooth;
+    font-size: calc(16px * var(--font-scale));
   }
 
   body {
-    @apply bg-background text-slate-900 font-sans antialiased m-0;
+    @apply bg-background text-slate-900 font-sans antialiased m-0 leading-relaxed;
+  }
+
+  html[data-contrast='high'] body {
+    @apply bg-slate-950 text-slate-50;
+  }
+
+  html[data-contrast='high'] .card {
+    @apply border-slate-500 bg-slate-900 text-slate-50;
+  }
+
+  html[data-contrast='high'] .text-muted {
+    @apply text-slate-300;
+  }
+
+  html[data-contrast='high'] a,
+  html[data-contrast='high'] button {
+    @apply text-white;
   }
 }
 

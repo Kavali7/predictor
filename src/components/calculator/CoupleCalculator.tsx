@@ -11,19 +11,21 @@ import { cn } from '../../lib/cn';
 import { ResultPanel, ShareModal, InsightsList, RecommendedNextSteps } from '../results';
 import { generatePdfSummary } from '../../lib/share/generatePdfSummary';
 
+const NAME_REGEX = /^[A-Za-zÀ-ÖØ-öø-ÿ'’ -]+$/;
+
 const partnerSchema = z.object({
   firstName: z
     .string()
     .trim()
     .min(2, 'Minimum 2 caractères')
     .max(40, 'Maximum 40 caractères')
-    .regex(/^[A-Za-zÀ-ÿ' -]+$/, 'Utilisez uniquement des lettres et tirets'),
+    .regex(NAME_REGEX, 'Utilisez uniquement des lettres, apostrophes ou tirets.'),
   lastName: z
     .string()
     .trim()
     .min(2, 'Minimum 2 caractères')
     .max(40, 'Maximum 40 caractères')
-    .regex(/^[A-Za-zÀ-ÿ' -]+$/, 'Utilisez uniquement des lettres et tirets'),
+    .regex(NAME_REGEX, 'Utilisez uniquement des lettres, apostrophes ou tirets.'),
   date: z
     .string()
     .min(1, 'Date requise')
@@ -223,13 +225,13 @@ export default function CoupleCalculator() {
                 onDownload={() => generatePdfSummary(results, { filename: 'lecture-couple.pdf' })}
                 onSendEmail={() => {
                   window.open(
-                    `mailto:contact@aapredictor.com?subject=Lecture de couple&body=${encodeURIComponent(
-                      `Nous venons de réaliser une lecture numérologique via Aa Predictor. Score ${Math.round(results.score)} / 100.`,
-                    )}`,
+                    'mailto:contact@aapredictor.com?subject=Lecture de couple&body=' +
+                      encodeURIComponent(
+                        `Nous venons de réaliser une lecture numérologique via Aa Predictor. Score ${Math.round(results.score)} / 100.`,
+                      ),
                     '_blank',
                   );
                 }}
-                className="bg-white"
               />
               <InsightsList results={results} />
               <RecommendedNextSteps results={results} onShare={() => setShareModalOpen(true)} />
@@ -342,7 +344,7 @@ function ShareDialog({ open, onClose, lastShared }: ShareDialogProps) {
                     onClick={onClose}
                     className="inline-flex w-full items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white shadow-md transition hover:shadow-lg"
                   >
-                    Continuer l expérience
+                    Continuer l’expérience
                   </button>
                 </div>
               </Dialog.Panel>
