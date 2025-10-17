@@ -17,10 +17,10 @@ export default function HeroSection() {
   return (
     <PageSection
       id="hero"
-      className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary/15 via-background to-secondary/10 px-6 py-16 sm:px-10 lg:px-16"
+      className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary/15 via-background to-secondary/10 px-4 py-16 sm:px-8 lg:px-16"
     >
       <DecorativeBackground />
-      <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)]">
+      <div className="flex flex-col items-center gap-12 lg:grid lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:items-center">
         <div className="space-y-8 text-center lg:text-left">
           <div className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.32em] text-primary shadow-sm backdrop-blur">
             <span>Nouvelle expérience</span>
@@ -29,7 +29,7 @@ export default function HeroSection() {
           </div>
 
           <div className="space-y-6">
-            <h1 className="text-balance text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
+            <h1 className="text-balance text-4xl font-bold leading-tight text-slate-950 sm:text-5xl lg:text-6xl">
               Vivez une <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">lecture numérologique</span> qui donne envie d être partagée
             </h1>
             <p className="text-balance text-base leading-relaxed text-slate-700 sm:text-lg">

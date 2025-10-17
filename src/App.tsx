@@ -113,8 +113,8 @@ export default function App() {
         <div className="space-y-2 text-center sm:text-left">
           <h2 className="section-title">Calculateur rapide</h2>
           <p className="text-sm leading-relaxed text-muted sm:max-w-2xl">
-            Renseignez vos prÃ©noms et dates de naissance pour obtenir une lecture instantanÃ©e. Validation en direct,
-            feedbacks clairs et prÃªts pour gÃ©nÃ©rer un rapport partageable.
+            Renseignez vos prénoms et dates de naissance pour obtenir une lecture instantanée. Validation en direct,
+            feedbacks clairs et prêts pour générer un rapport partageable.
           </p>
         </div>
         <CoupleCalculator />
@@ -125,8 +125,8 @@ export default function App() {
           open={shareOpen}
           onClose={() => setShareOpen(false)}
           shareUrl={shareUrl}
-          title="Partager lâ€™exemple Alice & Bob"
-          description={`Score ${Math.round(sampleResults.score)} / 100 â€“ ${sampleResults.couple.archetype}`}
+          title="Partager l’exemple Alice & Bob"
+          description={`Score ${Math.round(sampleResults.score)} / 100 – ${sampleResults.couple.archetype}`}
           hasCopied={hasCopied}
           onCopy={handleCopy}
         />

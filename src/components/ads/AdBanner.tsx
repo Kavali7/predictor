@@ -67,7 +67,7 @@ export default function AdBanner({ items, intervalMs, isLoading = false, onAdCli
         <img
           src={current.imageUrl}
           alt={current.alt}
-          className="h-[120px] w-full rounded-2xl object-cover object-center md:h-[180px] lg:h-[200px] xl:h-[250px]"
+          className="h-[120px] w-full max-w-full rounded-2xl object-cover object-center sm:h-[140px] md:h-[180px] lg:h-[220px] xl:h-[250px]"
         />
         {current.label && (
           <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold uppercase tracking-[0.28em] text-primary">

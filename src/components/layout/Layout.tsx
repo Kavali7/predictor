@@ -19,7 +19,7 @@ export default function Layout({ children, promoContent, ads }: LayoutProps) {
         {promoContent}
       </PromoBannerSlot>
       <Header />
-      <main className="mx-auto w-full max-w-6xl px-6 py-12 space-y-16">{children}</main>
+      <main className="mx-auto w-full max-w-6xl px-4 py-12 space-y-16 sm:px-6 lg:px-10 xl:max-w-7xl">{children}</main>
       <Footer />
     </div>
   );
