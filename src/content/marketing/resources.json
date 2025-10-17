@@ -1,0 +1,20 @@
+﻿[
+  {
+    "title": "Guide numérologie moderne",
+    "description": "Comprenez chaque nombre et découvrez des rituels pour nourrir votre lien.",
+    "link": "https://example.com/guide-numerologie",
+    "cta": "Télécharger le guide"
+  },
+  {
+    "title": "Template de soirée partage",
+    "description": "Animer une soirée autour de votre lecture et collecter les ressentis de vos proches.",
+    "link": "https://example.com/template-soiree",
+    "cta": "Accéder au template"
+  },
+  {
+    "title": "Masterclass compatibilité",
+    "description": "Atelier en direct pour approfondir votre rapport et poser vos questions.",
+    "link": "https://example.com/masterclass",
+    "cta": "Réserver ma place"
+  }
+]

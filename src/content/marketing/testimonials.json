@@ -1,0 +1,26 @@
+﻿[
+  {
+    "id": "alice-paul",
+    "quote": "L'expérience a transformé notre façon de communiquer. Le score nous a donné un langage commun pour évoluer.",
+    "name": "Alice & Paul",
+    "role": "En couple depuis 6 ans",
+    "image": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80",
+    "highlight": "Score 88/100"
+  },
+  {
+    "id": "fatou-sami",
+    "quote": "En quelques minutes, nous avons identifié nos forces et trouvé des rituels pour nourrir notre duo.",
+    "name": "Fatou & Sami",
+    "role": "Jeunes mariés",
+    "image": "https://images.unsplash.com/photo-1542596768-5d1d21f1cf98?auto=format&fit=crop&w=400&q=80",
+    "highlight": "Compatibilité créative"
+  },
+  {
+    "id": "ines-julien",
+    "quote": "La lecture partagée à nos proches a reçu un accueil incroyable. C'est notre outil fétiche désormais.",
+    "name": "Inès & Julien",
+    "role": "Ambassadeurs Aa Predictor",
+    "image": "https://images.unsplash.com/photo-1521119989659-a83eee488004?auto=format&fit=crop&w=400&q=80",
+    "highlight": "Partage 250+ vues"
+  }
+]

@@ -1,0 +1,20 @@
+﻿[
+  {
+    "step": 1,
+    "title": "Découvrir",
+    "description": "Saisissez les prénoms et dates pour révéler vos nombres personnels et de couple.",
+    "icon": "SparklesIcon"
+  },
+  {
+    "step": 2,
+    "title": "Analyser",
+    "description": "Recevez une interprétation détaillée, des insights et des actions pour nourrir votre duo.",
+    "icon": "ChartBarIcon"
+  },
+  {
+    "step": 3,
+    "title": "Partager",
+    "description": "Diffusez votre lecture via un lien magique, un PDF ou un email personnalisé.",
+    "icon": "PaperAirplaneIcon"
+  }
+]
