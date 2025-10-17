@@ -11,9 +11,8 @@ describe('CoupleCalculator', () => {
     expect(screen.getByDisplayValue('Bob')).toBeInTheDocument();
     expect(screen.getByDisplayValue('1990-07-15')).toBeInTheDocument();
     expect(screen.getByDisplayValue('1992-03-02')).toBeInTheDocument();
-    expect(
-      await screen.findByText((content) => /Score\s+\d+\s*\/\s*100/i.test(content)),
-    ).toBeInTheDocument();
+    const scoreMentions = await screen.findAllByText((content) => /Score\s+\d+\s*\/\s*100/i.test(content));
+    expect(scoreMentions.length).toBeGreaterThan(0);
   });
 
   it('désactive le bouton lorsque le formulaire est invalide', async () => {

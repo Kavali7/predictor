@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Dialog, Transition } from '@headlessui/react';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -8,6 +8,8 @@ import { ArrowPathIcon, SparklesIcon } from '@heroicons/react/24/outline';
 import FloatingLabelField from './FloatingLabelField';
 import { PartnerInput, useCoupleResults } from '../../hooks/useCoupleResults';
 import { cn } from '../../lib/cn';
+import { ResultPanel, ShareModal, InsightsList, RecommendedNextSteps } from '../results';
+import { generatePdfSummary } from '../../lib/share/generatePdfSummary';
 
 const partnerSchema = z.object({
   firstName: z
@@ -42,6 +44,9 @@ const defaultValues: CoupleCalculatorValues = {
 
 export default function CoupleCalculator() {
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [shareModalOpen, setShareModalOpen] = useState(false);
+  const [hasCopied, setHasCopied] = useState(false);
+  const [shareUrl, setShareUrl] = useState('https://aapredictor.com/experience');
   const [lastShared, setLastShared] = useState<{ partnerA: PartnerInput; partnerB: PartnerInput } | null>(null);
 
   const {
@@ -62,6 +67,14 @@ export default function CoupleCalculator() {
   const partnerB = watch('partnerB');
   const results = useCoupleResults(partnerA, partnerB);
 
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const url = new URL(window.location.href);
+      url.hash = 'partage';
+      setShareUrl(url.toString());
+    }
+  }, []);
+
   const onSubmit = async (values: CoupleCalculatorValues) => {
     await new Promise((resolve) => setTimeout(resolve, 450));
     setLastShared({
@@ -69,6 +82,7 @@ export default function CoupleCalculator() {
       partnerB: values.partnerB,
     });
     setDialogOpen(true);
+    setShareModalOpen(true);
   };
 
   const swapPartners = async () => {
@@ -199,7 +213,27 @@ export default function CoupleCalculator() {
         </header>
         <div className="space-y-4" aria-live="polite">
           {results ? (
-            <ResultGrid results={results} />
+            <>
+              <ResultPanel
+                variant="compact"
+                results={results}
+                headline="Résumé en direct"
+                subHeadline="Actions prêtes à l’emploi pour amplifier votre compatibilité."
+                onShare={() => setShareModalOpen(true)}
+                onDownload={() => generatePdfSummary(results, { filename: 'lecture-couple.pdf' })}
+                onSendEmail={() => {
+                  window.open(
+                    `mailto:contact@aapredictor.com?subject=Lecture de couple&body=${encodeURIComponent(
+                      `Nous venons de réaliser une lecture numérologique via Aa Predictor. Score ${Math.round(results.score)} / 100.`,
+                    )}`,
+                    '_blank',
+                  );
+                }}
+                className="bg-white"
+              />
+              <InsightsList results={results} />
+              <RecommendedNextSteps results={results} onShare={() => setShareModalOpen(true)} />
+            </>
           ) : (
             <div className="rounded-xl border border-dashed border-slate-300 bg-white/70 px-5 py-8 text-center text-sm text-muted">
               Complétez les informations des deux partenaires pour révéler la dynamique inédite de votre duo.
@@ -212,6 +246,26 @@ export default function CoupleCalculator() {
       </aside>
 
       <ShareDialog open={dialogOpen} onClose={() => setDialogOpen(false)} lastShared={lastShared} />
+      {results && (
+        <ShareModal
+          open={shareModalOpen}
+          onClose={() => setShareModalOpen(false)}
+          shareUrl={shareUrl}
+          title="Partager votre lecture"
+          description={`Score ${Math.round(results.score)} / 100 – ${results.couple.archetype}`}
+          hasCopied={hasCopied}
+          onCopy={async () => {
+            try {
+              await navigator.clipboard?.writeText(shareUrl);
+              setHasCopied(true);
+              setTimeout(() => setHasCopied(false), 1800);
+            } catch (error) {
+              console.warn('Clipboard non disponible', error);
+              setHasCopied(false);
+            }
+          }}
+        />
+      )}
     </div>
   );
 }
@@ -225,75 +279,6 @@ function TipCallout() {
         être exporté et partagé en un clic.
       </p>
     </div>
-  );
-}
-
-interface ResultGridProps {
-  results: ReturnType<typeof useCoupleResults>;
-}
-
-function ResultGrid({ results }: ResultGridProps) {
-  if (!results) return null;
-  return (
-    <div className="space-y-4">
-      <div className="grid gap-3 sm:grid-cols-2">
-        <ResultCard
-          title="Partenaire 1"
-          badge={`${results.partnerA.number}`}
-          tone="primary"
-          subtitle={results.partnerA.title}
-          description={results.partnerA.summary}
-        />
-        <ResultCard
-          title="Partenaire 2"
-          badge={`${results.partnerB.number}`}
-          tone="secondary"
-          subtitle={results.partnerB.title}
-          description={results.partnerB.summary}
-        />
-      </div>
-      <ResultCard
-        title="Couple"
-        badge={`${results.couple.number}`}
-        tone="accent"
-        subtitle={`${results.couple.archetype}`}
-        description={`${results.couple.dynamic} Score ${results.score} / 100`}
-        emphasized
-      />
-    </div>
-  );
-}
-
-interface ResultCardProps {
-  title: string;
-  badge: string;
-  subtitle: string;
-  description: string;
-  tone: 'primary' | 'secondary' | 'accent';
-  emphasized?: boolean;
-}
-
-function ResultCard({ title, badge, subtitle, description, tone, emphasized }: ResultCardProps) {
-  const toneClasses: Record<ResultCardProps['tone'], string> = {
-    primary: 'border-primary/30 bg-primary/5 text-primary',
-    secondary: 'border-secondary/30 bg-secondary/5 text-secondary',
-    accent: 'border-accent/30 bg-accent/5 text-accent',
-  };
-  return (
-    <article
-      className={cn(
-        'rounded-2xl border px-4 py-4 shadow-sm transition hover:shadow-md',
-        toneClasses[tone],
-        emphasized && 'sm:col-span-2',
-      )}
-    >
-      <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-500">{title}</p>
-      <div className="mt-2 flex items-baseline gap-3">
-        <span className="text-3xl font-semibold text-slate-900">{badge}</span>
-        <span className="text-sm font-semibold text-slate-800">{subtitle}</span>
-      </div>
-      <p className="mt-2 text-sm text-slate-700">{description}</p>
-    </article>
   );
 }
 
