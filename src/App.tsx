@@ -3,6 +3,7 @@ import { Layout, PageSection } from './components/layout';
 import { HeroSection } from './components/landing';
 import { CoupleCalculator } from './components/calculator';
 import { ResultPanel, ShareModal, InsightsList, RecommendedNextSteps } from './components/results';
+import type { AdItem } from './components/ads/useRotatingBanner';
 import { useCoupleResults } from './hooks/useCoupleResults';
 import { generatePdfSummary } from './lib/share/generatePdfSummary';
 
@@ -34,8 +35,27 @@ export default function App() {
     }
   };
 
+  const ads: AdItem[] = [
+    {
+      id: 'ad-banner-1',
+      imageUrl: 'https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=80',
+      alt: 'Retraite bien-être à Bali',
+      link: 'https://example.com/retraite-bali',
+      label: 'Retraite 2025',
+      background: 'linear-gradient(135deg, rgba(91,33,182,0.25), rgba(14,165,233,0.25))',
+    },
+    {
+      id: 'ad-banner-2',
+      imageUrl: 'https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1600&q=80',
+      alt: 'Masterclass numerologie',
+      link: 'https://example.com/masterclass-numerologie',
+      label: 'Masterclass',
+      background: 'linear-gradient(135deg, rgba(249,115,22,0.25), rgba(14,165,233,0.25))',
+    },
+  ];
+
   return (
-    <Layout>
+    <Layout ads={ads}>
       <HeroSection />
 
       <PageSection id="resultats" className="relative space-y-8">
