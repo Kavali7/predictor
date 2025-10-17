@@ -1,0 +1,28 @@
+{
+  "id": "couple-6",
+  "type": "couple",
+  "locale": "fr",
+  "number": 6,
+  "version": 1,
+  "updatedAt": "2025-10-17",
+  "archetype": "Couple Gardien",
+  "dynamic": "Soin, famille, esthétique de vie.",
+  "strengths": [
+    "engagement",
+    "bienveillance",
+    "sens de la maison"
+  ],
+  "blindspots": [
+    "sur‑charge",
+    "hyper‑responsabilité"
+  ],
+  "conflicts": [
+    "déséquilibre des tâches",
+    "moralisme"
+  ],
+  "rituals": [
+    "répartition explicite des rôles",
+    "week‑end de récupération mensuel"
+  ],
+  "advice": "Prendre soin de soi autant que des autres."
+}

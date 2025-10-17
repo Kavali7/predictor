@@ -1,0 +1,25 @@
+{
+  "id": "individual-7",
+  "type": "individual",
+  "locale": "fr",
+  "number": 7,
+  "version": 1,
+  "updatedAt": "2025-10-17",
+  "title": "Nombre 7 — Le Chercheur",
+  "summary": "Introspection, analyse, quête de sens. Besoin d’espace et de profondeur.",
+  "love": "Profond mais réservé; peut sembler distant. Clé: temps d’intimité ritualisés, verbaliser ses ressentis.",
+  "work": "Recherche, data, stratégie. Excelle en analyse; alterner pensée et tests terrain.",
+  "money": "Prudent et méthodique; investissements raisonnés.",
+  "health": "Tendance à l’isolement; sport doux en groupe, nature.",
+  "shadow": "Scepticisme excessif, détachement. Antidote: gratitude et engagement progressif.",
+  "overallAdvice": "Relier la réflexion à l’action, partager ses trouvailles.",
+  "luckyMonths": [
+    "juillet",
+    "janvier"
+  ],
+  "keywords": [
+    "analyse",
+    "intériorité",
+    "sagesse"
+  ]
+}

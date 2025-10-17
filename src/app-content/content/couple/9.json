@@ -1,0 +1,28 @@
+{
+  "id": "couple-9",
+  "type": "couple",
+  "locale": "fr",
+  "number": 9,
+  "version": 1,
+  "updatedAt": "2025-10-17",
+  "archetype": "Couple Humaniste",
+  "dynamic": "Valeurs, idéal, contribution au monde.",
+  "strengths": [
+    "altruisme",
+    "sens",
+    "culture"
+  ],
+  "blindspots": [
+    "flou matériel",
+    "sacrifice"
+  ],
+  "conflicts": [
+    "désenchantement face au réel",
+    "épuisement"
+  ],
+  "rituals": [
+    "projet solidaire concret",
+    "revues de réalité (budget/temps)"
+  ],
+  "advice": "Garder le sens tout en cadrenant le concret."
+}

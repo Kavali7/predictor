@@ -1,0 +1,28 @@
+{
+  "id": "couple-8",
+  "type": "couple",
+  "locale": "fr",
+  "number": 8,
+  "version": 1,
+  "updatedAt": "2025-10-17",
+  "archetype": "Couple Puissance",
+  "dynamic": "Ambition, sécurité, influence.",
+  "strengths": [
+    "vision",
+    "gestion financière",
+    "résilience"
+  ],
+  "blindspots": [
+    "lutte de pouvoir",
+    "dureté"
+  ],
+  "conflicts": [
+    "contrôle",
+    "priorité au travail sur le lien"
+  ],
+  "rituals": [
+    "comité financier positif",
+    "temps de vulnérabilité programmé"
+  ],
+  "advice": "Allier puissance et tendresse, redonner du temps au lien."
+}

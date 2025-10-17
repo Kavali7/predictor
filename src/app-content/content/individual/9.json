@@ -1,0 +1,25 @@
+{
+  "id": "individual-9",
+  "type": "individual",
+  "locale": "fr",
+  "number": 9,
+  "version": 1,
+  "updatedAt": "2025-10-17",
+  "title": "Nombre 9 — L’Humaniste",
+  "summary": "Idéal, empathie, transmission. Besoin de sens et d’utilité.",
+  "love": "Généreux, idéaliste; peut “sauver” l’autre. Clé: aimer sans se sacrifier, limites claires.",
+  "work": "Social, culture, impact. Concrétiser la vision en projets à étapes.",
+  "money": "Partage/dons; garder un cadre financier simple.",
+  "health": "Fatigue empathique; hygiène émotionnelle, récupération.",
+  "shadow": "Désillusion, fuite. Antidote: objectifs courts, ancrage corporel.",
+  "overallAdvice": "Allier cœur et pragmatisme: petits pas à grand impact.",
+  "luckyMonths": [
+    "septembre",
+    "décembre"
+  ],
+  "keywords": [
+    "altruisme",
+    "universalité",
+    "transmission"
+  ]
+}
