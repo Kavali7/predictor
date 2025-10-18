@@ -14,3 +14,10 @@
   Passe a l'execution de la tache 15 dans le dossier plan. N'oublie pas de faire les tests pour t'assurer de l'absence de problemes de compilation, d'avertissement et autres. Deplace cette tache une fois terminee dans un sous dossier done (que tu vas creer dans le dossier plan) et cree un commit en lui donnant le nom "Tache 15" puis pousse vers le depot distant. En fin, cree puis balances sur une nouvelle branche.
 
   envisager un code-splitting des modules lourds (PDF/ads) pour reduire le warning bundle.
+
+
+
+    Next steps suggérées :
+
+  1. Préparer l’authentification admin (Tâche 16) pour sécuriser les endpoints /api/ads.
+  2. Étudier le découpage des modules lourds (PDF/ads) pour faire disparaître l’avertissement de taille Vite.
