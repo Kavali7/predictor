@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import AdBanner from './AdBanner';
 import type { AdItem } from './useRotatingBanner';
@@ -49,10 +49,16 @@ describe('AdBanner', () => {
 
   it('permet de naviguer via les indicateurs', async () => {
     const user = userEvent.setup({ delay: null });
-    render(<AdBanner items={MOCK_ADS} intervalMs={10000} />);
+    render(<AdBanner items={MOCK_ADS} intervalMs={10000} />); 
 
     const indicatorButtons = screen.getAllByRole('button', { name: /afficher l'annonce/i });
     await user.click(indicatorButtons[1]);
     expect(screen.getByAltText('Annonce 2')).toBeInTheDocument();
+  });
+
+  it('declenche onAdView lors de l affichage', async () => {
+    const handleView = vi.fn();
+    render(<AdBanner items={MOCK_ADS} onAdView={handleView} intervalMs={10000} />);
+    await waitFor(() => expect(handleView).toHaveBeenCalledWith(MOCK_ADS[0]));
   });
 });

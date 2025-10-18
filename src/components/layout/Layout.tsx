@@ -11,9 +11,12 @@ import { cn } from '../../lib/cn';
 export interface LayoutProps extends PropsWithChildren {
   promoContent?: ReactNode;
   ads?: AdItem[];
+  adsLoading?: boolean;
+  onAdClick?: (item: AdItem) => void;
+  onAdView?: (item: AdItem) => void;
 }
 
-export default function Layout({ children, promoContent, ads }: LayoutProps) {
+export default function Layout({ children, promoContent, ads, adsLoading = false, onAdClick, onAdView }: LayoutProps) {
   const [contrastMode, setContrastMode] = useState<'standard' | 'high'>('standard');
   const [fontScale, setFontScale] = useState(1);
 
@@ -58,7 +61,15 @@ export default function Layout({ children, promoContent, ads }: LayoutProps) {
         Aller directement au contenu
       </a>
       <ScrollProgressBar />
-      <PromoBannerSlot fallback={ads ? <AdBanner items={ads} /> : undefined}>
+      <PromoBannerSlot
+        fallback={
+          adsLoading
+            ? <AdBanner items={ads ?? []} isLoading />
+            : ads
+              ? <AdBanner items={ads} onAdClick={onAdClick} onAdView={onAdView} />
+              : undefined
+        }
+      >
         {promoContent}
       </PromoBannerSlot>
       <Header />

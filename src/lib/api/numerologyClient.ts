@@ -74,6 +74,28 @@ export interface ShareDetailsResponse {
   expiresAt: string;
 }
 
+export interface AdvertisementMetrics {
+  impressions: number;
+  clicks: number;
+}
+
+export interface AdvertisementResponse {
+  id: string;
+  title: string;
+  imageUrl: string;
+  destinationUrl: string;
+  backgroundColor?: string | null;
+  label?: string | null;
+  alt?: string | null;
+  isActive: boolean;
+  weight: number;
+  startsAt?: string | null;
+  endsAt?: string | null;
+  createdAt: string;
+  updatedAt: string;
+  metrics: AdvertisementMetrics;
+}
+
 interface RequestOptions {
   signal?: AbortSignal;
 }
@@ -114,6 +136,27 @@ export async function createShareLink(payload: ShareCreateRequest, options: Requ
 export async function fetchShareDetails(slug: string, options: RequestOptions = {}) {
   return request<ShareDetailsResponse>(`/api/share/${slug}`, {
     method: "GET",
+    signal: options.signal,
+  });
+}
+
+export async function fetchActiveAdvertisements(options: RequestOptions = {}) {
+  return request<AdvertisementResponse[]>("/api/ads/active", {
+    method: "GET",
+    signal: options.signal,
+  });
+}
+
+export async function logAdvertisementImpression(adId: string, options: RequestOptions = {}) {
+  return request<{ message: string }>(`/api/ads/${adId}/impression`, {
+    method: "POST",
+    signal: options.signal,
+  });
+}
+
+export async function logAdvertisementClick(adId: string, options: RequestOptions = {}) {
+  return request<{ message: string }>(`/api/ads/${adId}/click`, {
+    method: "POST",
     signal: options.signal,
   });
 }

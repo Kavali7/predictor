@@ -1,4 +1,4 @@
-openapi: 3.0.3
+﻿openapi: 3.0.3
 info:
   title: Aa Predictor API
   version: 1.0.0
@@ -98,11 +98,194 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
+  /api/ads/active:
+    get:
+      summary: Lister les publicites actives
+      description: Renvoie les annonces actives et valides selon la fenetre temporelle et le flag d'activation.
+      responses:
+        "200":
+          description: Liste des publicites actives
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Advertisement"
+  /api/ads:
+    get:
+      summary: Lister toutes les publicites (admin)
+      parameters:
+        - $ref: "#/components/parameters/AdminToken"
+      responses:
+        "200":
+          description: Liste des publicites
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Advertisement"
+        "401":
+          description: Token admin invalide
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    post:
+      summary: Creer une publicite
+      parameters:
+        - $ref: "#/components/parameters/AdminToken"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AdvertisementCreate"
+      responses:
+        "201":
+          description: Publicite creee
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Advertisement"
+        "400":
+          description: Entree invalide
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "401":
+          description: Token admin invalide
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: Erreur serveur lors de la creation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  /api/ads/{id}:
+    patch:
+      summary: Mettre a jour une publicite
+      parameters:
+        - $ref: "#/components/parameters/AdminToken"
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AdvertisementUpdate"
+      responses:
+        "200":
+          description: Publicite mise a jour
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Advertisement"
+        "400":
+          description: Entree invalide
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "401":
+          description: Token admin invalide
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "404":
+          description: Publicite introuvable
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+    delete:
+      summary: Supprimer une publicite
+      parameters:
+        - $ref: "#/components/parameters/AdminToken"
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: Suppression reussie
+        "401":
+          description: Token admin invalide
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "404":
+          description: Publicite introuvable
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  /api/ads/{id}/impression:
+    post:
+      summary: Enregistrer une impression publicitaire
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "202":
+          description: Impression enregistree
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "404":
+          description: Publicite introuvable
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+  /api/ads/{id}/click:
+    post:
+      summary: Enregistrer un clic publicitaire
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "202":
+          description: Clic enregistre
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        "404":
+          description: Publicite introuvable
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
   /api/share:
     post:
       summary: Creer un lien de partage
       description: |
-        Enregistre un resultat de lecture pour g���nerer un permalien partageable. Le slug expire automatiquement une fois la date limite atteinte.
+        Enregistre un resultat de lecture pour generer un permalien partageable. Le slug expire automatiquement une fois la date limite atteinte.
       requestBody:
         required: true
         content:
@@ -164,13 +347,15 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
-  /api/ads/active:
-    get:
-      summary: Obtenir les publicites actives
-      responses:
-        "200":
-          description: Liste des pubs actives
 components:
+  parameters:
+    AdminToken:
+      name: X-Admin-Token
+      in: header
+      required: false
+      schema:
+        type: string
+      description: Jeton admin (optionnel tant que la securite n'est pas configuree).
   schemas:
     PersonalPayload:
       type: object
@@ -311,22 +496,66 @@ components:
           minimum: 40
           maximum: 100
           example: 84
-    ErrorIssue:
+    AdvertisementMetrics:
       type: object
       properties:
-        path:
-          type: string
-        message:
-          type: string
-    ErrorResponse:
+        impressions:
+          type: integer
+          example: 125
+        clicks:
+          type: integer
+          example: 12
+    AdvertisementBase:
       type: object
       properties:
-        message:
+        title:
           type: string
-        issues:
-          type: array
-          items:
-            $ref: "#/components/schemas/ErrorIssue"
+        imageUrl:
+          type: string
+          format: uri
+        destinationUrl:
+          type: string
+          format: uri
+        backgroundColor:
+          type: string
+          example: "#5b21b6"
+        label:
+          type: string
+        alt:
+          type: string
+        isActive:
+          type: boolean
+          default: true
+        weight:
+          type: integer
+          default: 1
+        startsAt:
+          type: string
+          format: date-time
+        endsAt:
+          type: string
+          format: date-time
+    Advertisement:
+      allOf:
+        - type: object
+          properties:
+            id:
+              type: string
+            createdAt:
+              type: string
+              format: date-time
+            updatedAt:
+              type: string
+              format: date-time
+            metrics:
+              $ref: "#/components/schemas/AdvertisementMetrics"
+        - $ref: "#/components/schemas/AdvertisementBase"
+    AdvertisementCreate:
+      allOf:
+        - $ref: "#/components/schemas/AdvertisementBase"
+    AdvertisementUpdate:
+      allOf:
+        - $ref: "#/components/schemas/AdvertisementBase"
     ShareMetadata:
       type: object
       properties:
@@ -381,3 +610,19 @@ components:
         expiresAt:
           type: string
           format: date-time
+    ErrorIssue:
+      type: object
+      properties:
+        path:
+          type: string
+        message:
+          type: string
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        issues:
+          type: array
+          items:
+            $ref: "#/components/schemas/ErrorIssue"

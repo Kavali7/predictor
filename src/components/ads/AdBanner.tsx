@@ -7,9 +7,10 @@ export interface AdBannerProps {
   intervalMs?: number;
   isLoading?: boolean;
   onAdClick?: (item: AdItem) => void;
+  onAdView?: (item: AdItem) => void;
 }
 
-export default function AdBanner({ items, intervalMs, isLoading = false, onAdClick }: AdBannerProps) {
+export default function AdBanner({ items, intervalMs, isLoading = false, onAdClick, onAdView }: AdBannerProps) {
   const { current, index, pause, resume, goTo, count, hasItems } = useRotatingBanner({
     items,
     intervalMs,
@@ -20,9 +21,10 @@ export default function AdBanner({ items, intervalMs, isLoading = false, onAdCli
 
   useEffect(() => {
     if (current) {
+      onAdView?.(current);
       console.log('ad-view', current.id);
     }
-  }, [current]);
+  }, [current, onAdView]);
 
   if (isLoading) {
     return (

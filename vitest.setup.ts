@@ -81,6 +81,25 @@ const respond = (data: unknown, status = 200) =>
     headers: { 'Content-Type': 'application/json' },
   });
 
+const defaultAds = [
+  {
+    id: 'ad-mock-1',
+    title: 'Retraite bien-etre',
+    imageUrl: 'https://example.com/ads/retreat.jpg',
+    destinationUrl: 'https://example.com/retreat',
+    backgroundColor: '#5b21b6',
+    label: 'Retraite',
+    alt: 'Retraite bien-etre',
+    isActive: true,
+    weight: 5,
+    startsAt: new Date().toISOString(),
+    endsAt: new Date(Date.now() + 1000 * 60 * 60 * 24).toISOString(),
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+    metrics: { impressions: 0, clicks: 0 },
+  },
+];
+
 const fetchMock = vi.fn(
   (input: RequestInfo | URL, init: RequestInit = {}): Promise<Response> =>
     new Promise((resolve, reject) => {
@@ -134,6 +153,16 @@ const fetchMock = vi.fn(
                 expiresAt: new Date(Date.now() + 1000 * 60 * 60 * 24).toISOString(),
               }),
             );
+            return;
+          }
+
+          if (url.endsWith('/api/ads/active')) {
+            resolve(respond(defaultAds));
+            return;
+          }
+
+          if (/\/api\/ads\/[\w-]+\/(impression|click)$/.test(url) && (init.method ?? 'GET').toUpperCase() === 'POST') {
+            resolve(respond({ message: 'ok' }, 202));
             return;
           }
 

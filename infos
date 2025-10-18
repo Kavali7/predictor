@@ -1,15 +1,16 @@
-Maintenant, tu vas créer un dossier plan. Dans ce dossier, tu vas recencer tout ce qui reste  
-  pour que le site soit pret à être déployer (frontent, bachend, fonction, logique,......) sous 
-  forme de 20 tâches. Les 20 tâches doivent couvrir tout. Dans le dossier, chaque fichier doit  
-  correspondre à l'une des têches (un fichier avec tous les détails, possible et prêt à être    
-  exécuter). Tu pars du frontend puis tu évolue jusqu'à la fin des tâches. Il faut choisir des  
-  couleurs de qualités (reparquable, css tailwild, un dsiengn modern, attrayant). Un site qui   
-  donne envi d'y séjourner.Rien que de misen forme modernes. Qui facilite la lecture.Des icones modernes et autres. 
+﻿Maintenant, tu vas creer un dossier plan. Dans ce dossier, tu vas recenser tout ce qui reste
+  pour que le site soit pret a etre deploye (frontend, backend, fonction, logique, ......) sous
+  forme de 20 taches. Les 20 taches doivent couvrir tout. Dans le dossier, chaque fichier doit
+  correspondre a l'une des taches (un fichier avec tous les details, possible et pret a etre
+  executer). Tu pars du frontend puis tu evolue jusqu'a la fin des taches. Il faut choisir des
+  couleurs de qualites (remarquable, css tailwind, un design moderne, attrayant). Un site qui
+  donne envie d'y sejourner. Rien que de mise en forme moderne. Qui facilite la lecture. Des
+  icones modernes et autres.
 
 
   git remote add origin https://github.com/Kavali7/predictor.git
 
 
-  Passe à l'exécution de la tache 13 dans le dossier plan. N'oublie pas de faire les tests pour t'assurer de l'abasense de problèmes de compilation, d'avertissement et autres.Déplace cette tâche une fois terminée dans un sous dossier done (que tu vas créer dans le dossier plan) et cré un commite en lui donnant le nom "Tache 13" puis pousse vers le depot distant.En fin, cré puis balances sur une nouvelle branche
+  Passe a l'execution de la tache 15 dans le dossier plan. N'oublie pas de faire les tests pour t'assurer de l'absence de problemes de compilation, d'avertissement et autres. Deplace cette tache une fois terminee dans un sous dossier done (que tu vas creer dans le dossier plan) et cree un commit en lui donnant le nom "Tache 15" puis pousse vers le depot distant. En fin, cree puis balances sur une nouvelle branche.
 
-  envisager un code-splitting des modules lourds (PDF/ads) pour réduire le warning bundle.
+  envisager un code-splitting des modules lourds (PDF/ads) pour reduire le warning bundle.
