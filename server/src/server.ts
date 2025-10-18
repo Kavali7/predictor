@@ -1,12 +1,13 @@
 import fastify from "fastify";
-import cors from "fastify-cors";
-import rateLimit from "fastify-rate-limit";
+import cors from "@fastify/cors";
+import rateLimit from "@fastify/rate-limit";
 import { env } from "./env";
-import logger from "./logger";
+import { loggerConfig } from "./logger";
+import { computeCouple, coupleInputSchema, computePersonal, personalInputSchema } from "./services/numerology";
 
 export function buildServer() {
   const app = fastify({
-    logger,
+    logger: loggerConfig,
   });
 
   app.register(cors, {
@@ -19,6 +20,48 @@ export function buildServer() {
   });
 
   app.get("/health", async () => ({ status: "ok", timestamp: new Date().toISOString() }));
+
+  app.post("/api/calc/personal", async (request, reply) => {
+    const parsed = personalInputSchema.safeParse(request.body);
+    if (!parsed.success) {
+      return reply.status(400).send({
+        message: "Invalid request body",
+        issues: parsed.error.issues.map((issue) => ({
+          path: issue.path.join("."),
+          message: issue.message,
+        })),
+      });
+    }
+
+    try {
+      const result = computePersonal(parsed.data);
+      return reply.status(200).send(result);
+    } catch (error) {
+      request.log.error(error, "Failed to compute personal numerology");
+      return reply.status(500).send({ message: "Failed to compute personal numerology" });
+    }
+  });
+
+  app.post("/api/calc/couple", async (request, reply) => {
+    const parsed = coupleInputSchema.safeParse(request.body);
+    if (!parsed.success) {
+      return reply.status(400).send({
+        message: "Invalid request body",
+        issues: parsed.error.issues.map((issue) => ({
+          path: issue.path.join("."),
+          message: issue.message,
+        })),
+      });
+    }
+
+    try {
+      const result = computeCouple(parsed.data);
+      return reply.status(200).send(result);
+    } catch (error) {
+      request.log.error(error, "Failed to compute couple numerology");
+      return reply.status(500).send({ message: "Failed to compute couple numerology" });
+    }
+  });
 
   return app;
 }

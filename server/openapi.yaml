@@ -24,39 +24,89 @@ paths:
   /api/calc/personal:
     post:
       summary: Calculer le nombre personnel
+      description: |
+        Calcule le profil numerologique d'un individu a partir de son nom et de sa date de naissance.
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                firstName:
-                  type: string
-                lastName:
-                  type: string
-                date:
-                  type: string
-                  format: date
-              required: [firstName, lastName, date]
+              $ref: "#/components/schemas/PersonalPayload"
+            examples:
+              default:
+                value:
+                  firstName: Alice
+                  lastName: Martin
+                  date: "1994-07-16"
       responses:
         "200":
-          description: Résultat personnel
+          description: Resultat personnel
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PersonalResponse"
+        "400":
+          description: Entree invalide
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: Erreur lors du calcul
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
   /api/calc/couple:
     post:
       summary: Calculer le nombre de couple
+      description: |
+        Calcule les profils personnels de deux partenaires, leur dynamique de couple et un score de compatibilite.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CouplePayload"
+            examples:
+              default:
+                value:
+                  partnerA:
+                    firstName: Alice
+                    lastName: Martin
+                    date: "1994-07-16"
+                  partnerB:
+                    firstName: Louis
+                    lastName: Bernard
+                    date: "1990-03-22"
       responses:
         "200":
-          description: Résultat couple
+          description: Resultat couple
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CoupleResponse"
+        "400":
+          description: Entree invalide
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: Erreur lors du calcul
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
   /api/share:
     post:
-      summary: Créer un lien de partage
+      summary: Creer un lien de partage
       responses:
         "201":
-          description: Lien créé
+          description: Lien cree
   /api/share/{slug}:
     get:
-      summary: Récupérer un lien de partage
+      summary: Recuperer un lien de partage
       parameters:
         - name: slug
           in: path
@@ -65,10 +115,167 @@ paths:
             type: string
       responses:
         "200":
-          description: Détails du partage
+          description: Details du partage
   /api/ads/active:
     get:
-      summary: Obtenir les publicités actives
+      summary: Obtenir les publicites actives
       responses:
         "200":
           description: Liste des pubs actives
+components:
+  schemas:
+    PersonalPayload:
+      type: object
+      required:
+        - firstName
+        - lastName
+        - date
+      properties:
+        firstName:
+          type: string
+          minLength: 2
+          example: Alice
+        lastName:
+          type: string
+          minLength: 2
+          example: Martin
+        date:
+          type: string
+          format: date
+          description: Date de naissance au format ISO (YYYY-MM-DD)
+          example: "1994-07-16"
+    PartnerInput:
+      allOf:
+        - $ref: "#/components/schemas/PersonalPayload"
+    CouplePayload:
+      type: object
+      required:
+        - partnerA
+        - partnerB
+      properties:
+        partnerA:
+          $ref: "#/components/schemas/PartnerInput"
+        partnerB:
+          $ref: "#/components/schemas/PartnerInput"
+    IndividualReport:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        locale:
+          type: string
+        number:
+          type: integer
+        version:
+          type: integer
+        updatedAt:
+          type: string
+          format: date
+        title:
+          type: string
+        summary:
+          type: string
+        love:
+          type: string
+        work:
+          type: string
+        money:
+          type: string
+        health:
+          type: string
+        shadow:
+          type: string
+        overallAdvice:
+          type: string
+        luckyMonths:
+          type: array
+          items:
+            type: string
+        keywords:
+          type: array
+          items:
+            type: string
+    CoupleReport:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        locale:
+          type: string
+        number:
+          type: integer
+        version:
+          type: integer
+        updatedAt:
+          type: string
+          format: date
+        archetype:
+          type: string
+        dynamic:
+          type: string
+        strengths:
+          type: array
+          items:
+            type: string
+        blindspots:
+          type: array
+          items:
+            type: string
+        conflicts:
+          type: array
+          items:
+            type: string
+        rituals:
+          type: array
+          items:
+            type: string
+        advice:
+          type: string
+    PersonalResponse:
+      type: object
+      properties:
+        number:
+          type: integer
+          example: 5
+        report:
+          $ref: "#/components/schemas/IndividualReport"
+    CoupleResponse:
+      type: object
+      properties:
+        partnerA:
+          $ref: "#/components/schemas/PersonalResponse"
+        partnerB:
+          $ref: "#/components/schemas/PersonalResponse"
+        couple:
+          type: object
+          properties:
+            number:
+              type: integer
+              example: 7
+            report:
+              $ref: "#/components/schemas/CoupleReport"
+        score:
+          type: integer
+          minimum: 40
+          maximum: 100
+          example: 84
+    ErrorIssue:
+      type: object
+      properties:
+        path:
+          type: string
+        message:
+          type: string
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        issues:
+          type: array
+          items:
+            $ref: "#/components/schemas/ErrorIssue"
