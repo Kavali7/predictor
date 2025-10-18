@@ -1,0 +1,74 @@
+openapi: 3.0.3
+info:
+  title: Aa Predictor API
+  version: 1.0.0
+servers:
+  - url: http://localhost:4000
+paths:
+  /health:
+    get:
+      summary: Healthcheck
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  timestamp:
+                    type: string
+                    format: date-time
+  /api/calc/personal:
+    post:
+      summary: Calculer le nombre personnel
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                firstName:
+                  type: string
+                lastName:
+                  type: string
+                date:
+                  type: string
+                  format: date
+              required: [firstName, lastName, date]
+      responses:
+        "200":
+          description: Résultat personnel
+  /api/calc/couple:
+    post:
+      summary: Calculer le nombre de couple
+      responses:
+        "200":
+          description: Résultat couple
+  /api/share:
+    post:
+      summary: Créer un lien de partage
+      responses:
+        "201":
+          description: Lien créé
+  /api/share/{slug}:
+    get:
+      summary: Récupérer un lien de partage
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Détails du partage
+  /api/ads/active:
+    get:
+      summary: Obtenir les publicités actives
+      responses:
+        "200":
+          description: Liste des pubs actives
