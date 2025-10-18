@@ -1,0 +1,25 @@
+{
+  "id": "individual-4",
+  "type": "individual",
+  "locale": "fr",
+  "number": 4,
+  "version": 1,
+  "updatedAt": "2025-10-17",
+  "title": "Nombre 4 — Le Bâtisseur",
+  "summary": "Structure, fiabilité, patience. Besoin de méthodes claires.",
+  "love": "Fidèle, protecteur; peut sembler rigide. Clé: introduire de la spontanéité planifiée, écouter les besoins de liberté.",
+  "work": "Opérations, ingénierie, finance. Eviter la micro‑gestion. Travailler avec des checklists et des revues régulières.",
+  "money": "Gestion prudente, réussite long terme. Construire un patrimoine progressivement.",
+  "health": "Tendance à la raideur; mobilité, renforcement doux, pauses actives.",
+  "shadow": "Conservatisme, résistance au changement. Antidote: réserver 10% du temps à l’innovation.",
+  "overallAdvice": "Solidité oui, rigidité non. Cadre clair + marges d’expérimentation.",
+  "luckyMonths": [
+    "avril",
+    "août"
+  ],
+  "keywords": [
+    "structure",
+    "discipline",
+    "fiabilité"
+  ]
+}

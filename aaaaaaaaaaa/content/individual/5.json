@@ -1,0 +1,25 @@
+{
+  "id": "individual-5",
+  "type": "individual",
+  "locale": "fr",
+  "number": 5,
+  "version": 1,
+  "updatedAt": "2025-10-17",
+  "title": "Nombre 5 — L’Aventurier",
+  "summary": "Liberté, mouvement, curiosité. Besoin de nouveauté encadrée.",
+  "love": "Déteste la routine, besoin d’expériences partagées. Clé: aventures planifiées à deux, pactes de confiance.",
+  "work": "Ventes, voyages, contextes en croissance. Exige des objectifs flexibles mais mesurables.",
+  "money": "Revenus cycliques; garder un coussin de sécurité. Eviter achats impulsifs (règle des 24h).",
+  "health": "Rythmes irréguliers; veiller aux excès. Sport ludique et varié.",
+  "shadow": "Impulsivité, dispersion. Antidote: micro‑habitudes quotidiennes.",
+  "overallAdvice": "Explorer sans se perdre: liberté + cadre minimal viable.",
+  "luckyMonths": [
+    "mai",
+    "septembre"
+  ],
+  "keywords": [
+    "liberté",
+    "mouvement",
+    "curiosité"
+  ]
+}

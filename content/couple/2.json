@@ -1,0 +1,27 @@
+{
+  "id": "couple-2",
+  "type": "couple",
+  "locale": "fr",
+  "number": 2,
+  "version": 1,
+  "updatedAt": "2025-10-17",
+  "archetype": "Couple Harmonique",
+  "dynamic": "Écoute, douceur, coopération naturelle.",
+  "strengths": [
+    "empathie",
+    "soutien réciproque",
+    "sécurité affective"
+  ],
+  "blindspots": [
+    "dépendance",
+    "non‑dits"
+  ],
+  "conflicts": [
+    "éviter le conflit plutôt que le résoudre"
+  ],
+  "rituals": [
+    "bilans doux hebdomadaires",
+    "temps de parole équitable"
+  ],
+  "advice": "Affirmer les besoins sans perdre la douceur."
+}

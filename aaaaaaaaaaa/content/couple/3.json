@@ -1,0 +1,28 @@
+{
+  "id": "couple-3",
+  "type": "couple",
+  "locale": "fr",
+  "number": 3,
+  "version": 1,
+  "updatedAt": "2025-10-17",
+  "archetype": "Couple Créatif",
+  "dynamic": "Fun, expression, social; beaucoup d’idées.",
+  "strengths": [
+    "légèreté",
+    "imagination",
+    "réseaux"
+  ],
+  "blindspots": [
+    "instabilité",
+    "dispersion"
+  ],
+  "conflicts": [
+    "promesses non tenues",
+    "jalousie sociale"
+  ],
+  "rituals": [
+    "sorties improvisées programmées",
+    "projets artistiques à deux"
+  ],
+  "advice": "Transformer les idées en projets livrables réguliers."
+}

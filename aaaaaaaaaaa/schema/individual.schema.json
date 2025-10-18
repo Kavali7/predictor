@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "IndividualReport",
+  "type": "object",
+  "required": [
+    "id",
+    "type",
+    "locale",
+    "number",
+    "title",
+    "summary",
+    "love",
+    "work",
+    "money",
+    "health",
+    "shadow",
+    "overallAdvice"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "type": {
+      "const": "individual"
+    },
+    "locale": {
+      "type": "string"
+    },
+    "number": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9
+    },
+    "version": {
+      "type": "integer"
+    },
+    "updatedAt": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "love": {
+      "type": "string"
+    },
+    "work": {
+      "type": "string"
+    },
+    "money": {
+      "type": "string"
+    },
+    "health": {
+      "type": "string"
+    },
+    "shadow": {
+      "type": "string"
+    },
+    "overallAdvice": {
+      "type": "string"
+    },
+    "luckyMonths": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "keywords": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,25 @@
+{
+  "id": "individual-6",
+  "type": "individual",
+  "locale": "fr",
+  "number": 6,
+  "version": 1,
+  "updatedAt": "2025-10-17",
+  "title": "Nombre 6 — Le Gardien",
+  "summary": "Responsabilité, soin, esthétique. Besoin de contribuer et d’harmoniser.",
+  "love": "Dévoué, familial; risque de sur‑responsabilisation. Clé: partager les tâches, préserver des temps pour soi.",
+  "work": "Éducation, soins, design d’expérience. Exprime l’exigence avec bienveillance.",
+  "money": "Tendance à dépenser pour les proches; budgétiser l’altruisme.",
+  "health": "Charge mentale; instituer des micro‑pauses et respiration.",
+  "shadow": "Perfectionnisme moral, jugement. Antidote: compassion envers soi.",
+  "overallAdvice": "Aimer sans s’épuiser: limites saines et réciprocité.",
+  "luckyMonths": [
+    "juin",
+    "octobre"
+  ],
+  "keywords": [
+    "soin",
+    "famille",
+    "esthétique"
+  ]
+}

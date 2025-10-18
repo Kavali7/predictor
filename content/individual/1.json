@@ -1,0 +1,25 @@
+{
+  "id": "individual-1",
+  "type": "individual",
+  "locale": "fr",
+  "number": 1,
+  "version": 1,
+  "updatedAt": "2025-10-17",
+  "title": "Nombre 1 — Le Pionnier",
+  "summary": "Leadership, initiative, volonté. Besoin d’autonomie et d’impact concret.",
+  "love": "Attiré par des partenaires autonomes. Peut paraître exigeant ou direct. Clé: écouter activement, reconnaître les initiatives de l’autre, éviter la domination.",
+  "work": "Excellence en pilotage et entrepreneuriat. Fixer des objectifs trimestriels, mesurer, déléguer tôt pour ne pas tout centraliser.",
+  "money": "Prospérité liée aux prises d’initiatives. Prudence sur les décisions impulsives; garder un fonds de sécurité.",
+  "health": "Risque de stress de performance. Hygiène: sommeil régulier, sports courts mais fréquents, respiration.",
+  "shadow": "Ego, impatience. Antidote: feedbacks réguliers, mentorat, rituels d’humilité.",
+  "overallAdvice": "Canaliser le feu en objectifs concrets et partagés. Célébrer les victoires sans écraser l’environnement.",
+  "luckyMonths": [
+    "mars",
+    "juillet"
+  ],
+  "keywords": [
+    "pionnier",
+    "indépendance",
+    "audace"
+  ]
+}

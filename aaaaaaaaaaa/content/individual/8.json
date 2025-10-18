@@ -1,0 +1,25 @@
+{
+  "id": "individual-8",
+  "type": "individual",
+  "locale": "fr",
+  "number": 8,
+  "version": 1,
+  "updatedAt": "2025-10-17",
+  "title": "Nombre 8 — Le Stratège",
+  "summary": "Ambition, pouvoir, réalisation. Besoin de maîtriser et de sécuriser.",
+  "love": "Protecteur, structurant; risque de contrôle. Clé: transparence et co‑décision, surtout financière.",
+  "work": "Direction, négociation, investissement. Allier performance et éthique.",
+  "money": "Orientation réussite matérielle; discipline, levier d’investissement.",
+  "health": "Pression élevée; alterner force et relaxation.",
+  "shadow": "Dureté, intransigeance. Antidote: reconnaissance publique des autres.",
+  "overallAdvice": "Puissance avec cœur: aligner ambition et service.",
+  "luckyMonths": [
+    "août",
+    "novembre"
+  ],
+  "keywords": [
+    "pouvoir",
+    "réalisation",
+    "éthique"
+  ]
+}

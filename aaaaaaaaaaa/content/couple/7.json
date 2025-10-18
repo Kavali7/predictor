@@ -1,0 +1,28 @@
+{
+  "id": "couple-7",
+  "type": "couple",
+  "locale": "fr",
+  "number": 7,
+  "version": 1,
+  "updatedAt": "2025-10-17",
+  "archetype": "Couple Introspectif",
+  "dynamic": "Profondeur, quête de sens, intimité intellectuelle.",
+  "strengths": [
+    "réflexion",
+    "fidélité",
+    "projets de recherche"
+  ],
+  "blindspots": [
+    "isolement social",
+    "distance émotionnelle"
+  ],
+  "conflicts": [
+    "retrait",
+    "malentendus non verbalisés"
+  ],
+  "rituals": [
+    "cercle d’amis commun",
+    "dîners à thème pour parler cœur"
+  ],
+  "advice": "Partager la vie intérieure et planifier des sorties sociales."
+}

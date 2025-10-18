@@ -1,0 +1,28 @@
+{
+  "id": "couple-4",
+  "type": "couple",
+  "locale": "fr",
+  "number": 4,
+  "version": 1,
+  "updatedAt": "2025-10-17",
+  "archetype": "Couple Bâtisseur",
+  "dynamic": "Solidité, patrimoine, fiabilité.",
+  "strengths": [
+    "organisation",
+    "persévérance",
+    "confiance"
+  ],
+  "blindspots": [
+    "routine",
+    "rigidité"
+  ],
+  "conflicts": [
+    "manque de spontanéité",
+    "résistance au changement"
+  ],
+  "rituals": [
+    "soirée surprise bimensuelle",
+    "revue budget/plans"
+  ],
+  "advice": "Garder un cadre, mais ménager des espaces de jeu."
+}

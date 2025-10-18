@@ -1,0 +1,25 @@
+{
+  "id": "individual-3",
+  "type": "individual",
+  "locale": "fr",
+  "number": 3,
+  "version": 1,
+  "updatedAt": "2025-10-17",
+  "title": "Nombre 3 — Le Créatif",
+  "summary": "Expression, imagination, sociabilité. Besoin de variété et de jeu.",
+  "love": "Charme et humour; craint la routine. Clé: instaurer des rituels ludiques, communiquer par la créativité.",
+  "work": "Communication, arts, marketing, storytelling. Canaliser en sprints : idéation → prototypage → feedback rapide.",
+  "money": "Flux variable; mettre en place un budget simple et visuel. Prioriser projets à ROI créatif.",
+  "health": "Énergie ondulante; préserver le sommeil et la récupération. Éviter surmenage par multitâche.",
+  "shadow": "Dispersion. Antidote: règle des 3 priorités quotidiennes.",
+  "overallAdvice": "Transformer l’abondance d’idées en livrables réguliers. Protéger les temps de création.",
+  "luckyMonths": [
+    "mars",
+    "décembre"
+  ],
+  "keywords": [
+    "créativité",
+    "expression",
+    "jeu"
+  ]
+}

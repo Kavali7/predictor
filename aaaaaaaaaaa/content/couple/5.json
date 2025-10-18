@@ -1,0 +1,28 @@
+{
+  "id": "couple-5",
+  "type": "couple",
+  "locale": "fr",
+  "number": 5,
+  "version": 1,
+  "updatedAt": "2025-10-17",
+  "archetype": "Couple Explorateur",
+  "dynamic": "Aventures, voyages, essais/erreurs.",
+  "strengths": [
+    "adaptabilité",
+    "curiosité",
+    "énergie"
+  ],
+  "blindspots": [
+    "volatilité",
+    "instabilité matérielle"
+  ],
+  "conflicts": [
+    "jalousie de liberté",
+    "décisions impulsives"
+  ],
+  "rituals": [
+    "trimestre‑aventure",
+    "charte de liberté et de confiance"
+  ],
+  "advice": "Liberté + engagements clairs et datés."
+}

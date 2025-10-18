@@ -1,0 +1,28 @@
+{
+  "id": "couple-1",
+  "type": "couple",
+  "locale": "fr",
+  "number": 1,
+  "version": 1,
+  "updatedAt": "2025-10-17",
+  "archetype": "Couple Pionnier",
+  "dynamic": "Énergie d’initiative commune, envie de créer et de lancer.",
+  "strengths": [
+    "audace partagée",
+    "capacité de décision",
+    "vitesse d’exécution"
+  ],
+  "blindspots": [
+    "duels d’ego",
+    "impatience mutuelle"
+  ],
+  "conflicts": [
+    "qui mène?",
+    "priorités concurrentes"
+  ],
+  "rituals": [
+    "objectif mensuel commun + célébration",
+    "debrief court hebdo"
+  ],
+  "advice": "Définir les rôles et célébrer sans compétition intérieure."
+}

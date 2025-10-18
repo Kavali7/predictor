@@ -1,0 +1,25 @@
+{
+  "id": "individual-2",
+  "type": "individual",
+  "locale": "fr",
+  "number": 2,
+  "version": 1,
+  "updatedAt": "2025-10-17",
+  "title": "Nombre 2 — Le Diplomate",
+  "summary": "Coopération, écoute, sens de l’harmonie. Besoin de liens équilibrés.",
+  "love": "Empathique et conciliant. Risque d’effacement pour “maintenir la paix”. Clé: poser des limites, exprimer ses besoins clairement.",
+  "work": "A l’aise en RH, médiation, partenariats. S’affirmer en réunion (script + préparation). Compétence: tisser des alliances.",
+  "money": "Stabilité par la coopération. Attention à l’influence d’autrui dans les achats; décider à tête reposée.",
+  "health": "Somatisations lors de conflits. Hygiène: marche, étirements, respiration en cohérence cardiaque.",
+  "shadow": "Indécision, dépendance affective. Antidote: règles de décision simples (2 options, 24h).",
+  "overallAdvice": "Prendre sa place sans rompre l’harmonie. Apprendre à dire non sereinement.",
+  "luckyMonths": [
+    "février",
+    "novembre"
+  ],
+  "keywords": [
+    "cooperation",
+    "harmonie",
+    "médiation"
+  ]
+}
