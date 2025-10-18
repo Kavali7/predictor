@@ -101,12 +101,38 @@ paths:
   /api/share:
     post:
       summary: Creer un lien de partage
+      description: |
+        Enregistre un resultat de lecture pour g���nerer un permalien partageable. Le slug expire automatiquement une fois la date limite atteinte.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ShareCreateRequest"
       responses:
         "201":
           description: Lien cree
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ShareCreateResponse"
+        "400":
+          description: Entree invalide
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: Erreur lors de la creation du partage
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
   /api/share/{slug}:
     get:
       summary: Recuperer un lien de partage
+      description: |
+        Retourne le payload associe a un slug valide et non expire. Renvoie `404` si introuvable, `410` si le lien est expire.
       parameters:
         - name: slug
           in: path
@@ -116,6 +142,28 @@ paths:
       responses:
         "200":
           description: Details du partage
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ShareDetailsResponse"
+        "400":
+          description: Parametre slug invalide
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "404":
+          description: Lien introuvable
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "410":
+          description: Lien expire
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
   /api/ads/active:
     get:
       summary: Obtenir les publicites actives
@@ -279,3 +327,57 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/ErrorIssue"
+    ShareMetadata:
+      type: object
+      properties:
+        channel:
+          type: string
+          description: Canal utilise pour partager le lien (email, sms, whatsapp, etc.)
+          example: whatsapp
+    ShareCreateRequest:
+      type: object
+      required:
+        - results
+      properties:
+        results:
+          $ref: "#/components/schemas/CoupleResponse"
+        metadata:
+          $ref: "#/components/schemas/ShareMetadata"
+    ShareCreateResponse:
+      type: object
+      required:
+        - slug
+        - url
+        - expiresAt
+      properties:
+        slug:
+          type: string
+          example: kp9Xf12dQwA3
+        url:
+          type: string
+          format: uri
+          example: https://aapredictor.com/share/kp9Xf12dQwA3
+        expiresAt:
+          type: string
+          format: date-time
+          example: 2025-11-16T12:00:00.000Z
+    ShareDetailsResponse:
+      type: object
+      required:
+        - slug
+        - results
+        - createdAt
+        - expiresAt
+      properties:
+        slug:
+          type: string
+        results:
+          $ref: "#/components/schemas/CoupleResponse"
+        metadata:
+          $ref: "#/components/schemas/ShareMetadata"
+        createdAt:
+          type: string
+          format: date-time
+        expiresAt:
+          type: string
+          format: date-time

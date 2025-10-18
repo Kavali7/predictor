@@ -1,26 +1,78 @@
-import { describe, expect, it, vi } from 'vitest';
+﻿import { describe, expect, it, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import ResultPanel from './ResultPanel';
 import type { CoupleResults } from '../../hooks/useCoupleResults';
 
+const partnerAReport = {
+  id: 'individual-7',
+  type: 'individual',
+  locale: 'fr',
+  number: 7,
+  version: 1,
+  updatedAt: '2025-01-01',
+  title: 'Visionnaire inspiré',
+  summary: 'Explore des idées nouvelles et stimule la relation par la curiosité.',
+  love: 'Passionné et investi.',
+  work: 'Analyse et stratégie.',
+  money: 'Gère avec prudence.',
+  health: 'Veille à l’équilibre émotionnel.',
+  shadow: 'Peut s’isoler.',
+  overallAdvice: 'Partager ses visions avec son partenaire.',
+  luckyMonths: ['mars'],
+  keywords: ['vision', 'intuition'],
+};
+
+const partnerBReport = {
+  ...partnerAReport,
+  id: 'individual-4',
+  number: 4,
+  title: 'Architecte stable',
+  summary: 'Ancre le duo avec structure et engagement durable.',
+};
+
+const coupleReport = {
+  id: 'couple-11',
+  type: 'couple',
+  locale: 'fr',
+  number: 11,
+  version: 1,
+  updatedAt: '2025-01-01',
+  archetype: 'Constellation lumineuse',
+  dynamic: 'Une alchimie qui invite à rayonner autour de soi.',
+  strengths: ['vision partagée'],
+  blindspots: ['fatigue énergétique'],
+  conflicts: ['rythme différent'],
+  rituals: ['revue mensuelle'],
+  advice: 'Célébrez vos victoires en duo.',
+};
+
 const MOCK_RESULTS: CoupleResults = {
   partnerA: {
     number: 7,
-    title: 'Visionnaire inspiré',
-    summary: 'Explore des idées nouvelles et stimule la relation par la curiosité.',
+    title: partnerAReport.title,
+    summary: partnerAReport.summary,
+    report: partnerAReport,
   },
   partnerB: {
     number: 4,
-    title: 'Architecte stable',
-    summary: 'Ancre le duo avec structure et engagement durable.',
+    title: partnerBReport.title,
+    summary: partnerBReport.summary,
+    report: partnerBReport,
   },
   couple: {
     number: 11,
-    archetype: 'Constellation lumineuse',
-    dynamic: 'Une alchimie qui invite à rayonner autour de soi.',
+    archetype: coupleReport.archetype,
+    dynamic: coupleReport.dynamic,
+    report: coupleReport,
   },
   score: 92,
+  raw: {
+    partnerA: { number: 7, report: partnerAReport },
+    partnerB: { number: 4, report: partnerBReport },
+    couple: { number: 11, report: coupleReport },
+    score: 92,
+  },
 };
 
 describe('ResultPanel', () => {

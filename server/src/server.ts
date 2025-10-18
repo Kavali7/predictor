@@ -4,6 +4,7 @@ import rateLimit from "@fastify/rate-limit";
 import { env } from "./env";
 import { loggerConfig } from "./logger";
 import { computeCouple, coupleInputSchema, computePersonal, personalInputSchema } from "./services/numerology";
+import { createShare, getShare, shareCreateSchema } from "./services/share";
 
 export function buildServer() {
   const app = fastify({
@@ -61,6 +62,50 @@ export function buildServer() {
       request.log.error(error, "Failed to compute couple numerology");
       return reply.status(500).send({ message: "Failed to compute couple numerology" });
     }
+  });
+
+  app.post("/api/share", async (request, reply) => {
+    const parsed = shareCreateSchema.safeParse(request.body);
+    if (!parsed.success) {
+      return reply.status(400).send({
+        message: "Invalid request body",
+        issues: parsed.error.issues.map((issue) => ({
+          path: issue.path.join("."),
+          message: issue.message,
+        })),
+      });
+    }
+
+    try {
+      const result = createShare(parsed.data);
+      return reply.status(201).send(result);
+    } catch (error) {
+      request.log.error(error, "Failed to create share");
+      return reply.status(500).send({ message: "Failed to create share" });
+    }
+  });
+
+  app.get("/api/share/:slug", async (request, reply) => {
+    const { slug } = request.params as { slug?: string };
+    if (!slug) {
+      return reply.status(400).send({ message: "Missing slug parameter" });
+    }
+
+    const result = getShare(slug);
+
+    if (result.status === "invalid") {
+      return reply.status(400).send({ message: "Invalid slug format" });
+    }
+
+    if (result.status === "not_found") {
+      return reply.status(404).send({ message: "Share not found" });
+    }
+
+    if (result.status === "expired") {
+      return reply.status(410).send({ message: "Share expired" });
+    }
+
+    return reply.status(200).send(result.data);
   });
 
   return app;
